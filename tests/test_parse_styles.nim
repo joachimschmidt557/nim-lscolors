@@ -32,3 +32,7 @@ test "parse some rgb color":
   assert style.get.fg.get.ckRGBVal == (123u8, 123u8, 123u8)
   assert style.get.bg.isNone
   assert style.get.font == FontStyle(bold: true, italic: false, underline: false)
+
+test "parse some malformed color":
+  let style = parseStyle("38;2;123")
+  assert style.isNone
