@@ -1,0 +1,4 @@
+examples/ls
+
+tests/test_conv_stdlibterm
+tests/test_parse_lscolors
