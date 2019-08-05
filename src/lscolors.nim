@@ -50,6 +50,10 @@ proc parseLsColors*(str: string): LsColors =
       else:
         result.patterns.add((rule.pattern, style.get))
 
+proc defaultLsColors*(): LsColors =
+  ## A set of default LS_COLORS
+  return parseLsColors(default)
+
 proc parseLsColorsEnv*(): LsColors =
   ## Parses the LS_COLORS environment variable.
   ## Defaults to `defaultLsColors` when no such
@@ -60,9 +64,6 @@ proc parseLsColorsEnv*(): LsColors =
     parseLsColors(getEnv(envVar))
   else:
     defaultLsColors()
-
-proc defaultLsColors*(): LsColors =
-  return parseLsColors(default)
 
 proc pathMatchesPattern(path: string, pattern: string): bool =
   ## Returns true iff the path matches this pattern
