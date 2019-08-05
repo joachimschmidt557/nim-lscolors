@@ -51,10 +51,15 @@ proc parseLsColors*(str: string): LsColors =
         result.patterns.add((rule.pattern, style.get))
 
 proc parseLsColorsEnv*(): LsColors =
-  ## Parses the LS_COLORS environment variable
+  ## Parses the LS_COLORS environment variable.
+  ## Defaults to `defaultLsColors` when no such
+  ## environment variable exists
   const
     envVar = "LS_COLORS"
-  return parseLsColors(getEnv(envVar))
+  if existsEnv(envVar):
+    parseLsColors(getEnv(envVar))
+  else:
+    defaultLsColors()
 
 proc defaultLsColors*(): LsColors =
   return parseLsColors(default)
