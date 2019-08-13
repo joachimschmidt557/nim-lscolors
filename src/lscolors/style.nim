@@ -78,8 +78,16 @@ proc parseStyle*(str:string): Option[Style] =
     red = 0u8
     green = 0u8
 
+    components:seq[int]
+
+  # Catch any parseInt errors
+  try:
+    components = str.split(';').map(parseInt)
+  except:
+    return none Style
+
   # Run the finite automata-like parser
-  for part in str.split(';').map(parseInt):
+  for part in components:
     case state:
     of psParse8:
       case part
