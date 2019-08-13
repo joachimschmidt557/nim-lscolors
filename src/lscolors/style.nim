@@ -105,7 +105,7 @@ proc parseStyle*(str:string): Option[Style] =
       of 45: bg = some Color(kind: ck8, ck8Val: c8Magenta)
       of 46: bg = some Color(kind: ck8, ck8Val: c8Cyan)
       of 47: bg = some Color(kind: ck8, ck8Val: c8White)
-      of 48: discard # Todo
+      of 48: state = psParseBgNon8
       of 49: bg = none Color
       else: break
 
