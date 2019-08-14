@@ -62,7 +62,12 @@ type
     psParseBgBlue,
 
 proc defaultFontStyle*(): FontStyle =
+  ## Default font (not bold, not italic, not underlined)
   FontStyle(bold: false, italic: false, underline: false)
+
+proc defaultStyle*(): Style =
+  ## Default style (no colors, default font)
+  Style(fg: none Color, bg: none Color, font: defaultFontStyle())
 
 proc parseStyle*(str:string): Option[Style] =
   ## Parses the style description

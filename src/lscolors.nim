@@ -83,7 +83,10 @@ proc styleForDirEntry*(lsc:LsColors, entry:Entry): Style =
 
   ## Pick style from type
   if entry.typ != etNormal and entry.typ != etRegularFile:
-    return lsc.types[entry.typ]
+    if entry.typ in lsc.types:
+      return lsc.types[entry.typ]
+    else:
+      return defaultStyle()
 
   ## Pick style from path
   for pattern in lsc.patterns:
