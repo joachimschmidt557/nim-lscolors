@@ -865,6 +865,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#defaultFontStyle"
     title="defaultFontStyle(): FontStyle"><wbr />default<wbr />Font<wbr />Style<span class="attachedType">FontStyle</span></a></li>
+  <li><a class="reference" href="#defaultStyle"
+    title="defaultStyle(): Style"><wbr />default<wbr />Style<span class="attachedType">Style</span></a></li>
   <li><a class="reference" href="#parseStyle%2Cstring"
     title="parseStyle(str: string): Option[Style]"><wbr />parse<wbr />Style<span class="attachedType">Style</span></a></li>
 
@@ -960,7 +962,14 @@ Represents a terminal output style
 <dt><pre><span class="Keyword">proc</span> <a href="#defaultFontStyle"><span class="Identifier">defaultFontStyle</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="style.html#FontStyle"><span class="Identifier">FontStyle</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+Default font (not bold, not italic, not underlined)
 
+</dd>
+<a id="defaultStyle"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#defaultStyle"><span class="Identifier">defaultStyle</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="style.html#Style"><span class="Identifier">Style</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Default style (no colors, default font)
 
 </dd>
 <a id="parseStyle,string"></a>
@@ -980,7 +989,7 @@ Parses the style description
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2019-08-13 18:03:57 UTC</small>
+        <small>Made with Nim. Generated: 2019-08-14 11:33:31 UTC</small>
       </div>
     </div>
   </div>
