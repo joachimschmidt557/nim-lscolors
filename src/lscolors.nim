@@ -86,11 +86,17 @@ proc styleForDirEntry*(lsc:LsColors, entry:Entry): Style =
   ## Returns the style which should be used
   ## for this specific entry
 
-  ## Pick style from type
+  # Special case: inherit style from target
+  if entry.typ == etSymbolicLink and lsc.lnTarget:
+    let target = entry.path.expandSymlink
+    return styleForDirEntry(lsc, Entry(path: target,
+                                       typ: target.pathEntryType()))
+
+  # Pick style from type
   if entry.typ != etNormal and entry.typ != etRegularFile:
     return lsc.types.getOrDefault(entry.typ, defaultStyle())
 
-  ## Pick style from path
+  # Pick style from path
   for pattern in lsc.patterns:
     if pathMatchesPattern(entry.path, pattern[0]):
       return pattern[1]
