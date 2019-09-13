@@ -83,22 +83,22 @@ proc pathEntryType*(path:string): EntryType =
   if S_ISSOCK(res.st_mode):
     return etSocket
 
-  if (res.st_mode and S_ISUID) != 0'i32:
+  if (res.st_mode.cint and S_ISUID) != 0'i32:
     return etSetuid
 
-  if (res.st_mode and S_ISGID) != 0'i32:
+  if (res.st_mode.cint and S_ISGID) != 0'i32:
     return etSetgid
 
-  if (res.st_mode and S_ISVTX) != 0'i32:
+  if (res.st_mode.cint and S_ISVTX) != 0'i32:
     return etSticky
 
   if S_ISREG(res.st_mode):
     # Check if this file is executable
-    if (res.st_mode and S_IXUSR) != 0'i32:
+    if (res.st_mode.cint and S_IXUSR) != 0'i32:
       return etExecutableFile
-    if (res.st_mode and S_IXGRP) != 0'i32:
+    if (res.st_mode.cint and S_IXGRP) != 0'i32:
       return etExecutableFile
-    if (res.st_mode and S_IXOTH) != 0'i32:
+    if (res.st_mode.cint and S_IXOTH) != 0'i32:
       return etExecutableFile
 
     return etRegularFile
