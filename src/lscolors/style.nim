@@ -120,7 +120,7 @@ proc parseStyle*(str:string): Option[Style] =
       of 47: bg = some Color(kind: ck8, ck8Val: c8White)
       of 48: state = psParseBgNon8
       of 49: bg = none Color
-      else: break
+      else: return none Style
 
     of psParseFgNon8:
       case part
