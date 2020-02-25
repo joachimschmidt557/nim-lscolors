@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/joachimschmidt557/nim-lscolors.svg?branch=master)](https://travis-ci.org/joachimschmidt557/nim-lscolors)
 ![GitHub](https://img.shields.io/github/license/joachimschmidt557/nim-lscolors)
+[![Nimble](https://nimble.directory/ci/badges/lscolors/version.svg)](https://nimble.directory/pkg/lscolors)
 
 A library for colorizing paths according to `LS_COLORS`.
 
