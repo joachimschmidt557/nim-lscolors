@@ -113,7 +113,7 @@ function main() {
   <li><a class="reference" href="#LsColors"
     title="LsColors = object
   types*: TableRef[EntryType, Style]
-  patterns*: seq[tuple[pattern: string, color: Style]]
+  patterns*: TableRef[string, Style]
   lnTarget*: bool"><wbr />Ls<wbr />Colors<span class="attachedType"></span></a></li>
 
   </ul>
@@ -170,7 +170,7 @@ Holds a path and its type
 <a id="LsColors"></a>
 <dt><pre><a href="lscolors.html#LsColors"><span class="Identifier">LsColors</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">types</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TableRef</span><span class="Other">[</span><a href="entrytypes.html#EntryType"><span class="Identifier">EntryType</span></a><span class="Other">,</span> <a href="style.html#Style"><span class="Identifier">Style</span></a><span class="Other">]</span>
-  <span class="Identifier">patterns</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="style.html#Style"><span class="Identifier">Style</span></a><span class="Other">]</span><span class="Other">]</span>
+  <span class="Identifier">patterns</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <a href="style.html#Style"><span class="Identifier">Style</span></a><span class="Other">]</span>
   <span class="Identifier">lnTarget</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
 </pre></dt>
 <dd>
@@ -243,7 +243,7 @@ Return a seq of path components and corresponding style
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-03-05 19:53:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-03-05 20:00:49 UTC</small>
       </div>
     </div>
   </div>
