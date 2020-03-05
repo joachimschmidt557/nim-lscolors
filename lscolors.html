@@ -133,6 +133,9 @@ function main() {
     title="styleForDirEntry(lsc: LsColors; entry: Entry): Style"><wbr />style<wbr />For<wbr />Dir<wbr />Entry<span class="attachedType">LsColors</span></a></li>
   <li><a class="reference" href="#styleForPath%2CLsColors%2Cstring"
     title="styleForPath(lsc: LsColors; path: string): Style"><wbr />style<wbr />For<wbr />Path<span class="attachedType">LsColors</span></a></li>
+  <li><a class="reference" href="#styleForPathComponents%2CLsColors%2Cstring"
+    title="styleForPathComponents(lsc: LsColors; path: string): seq[
+    tuple[path: string, style: Style]]"><wbr />style<wbr />For<wbr />Path<wbr />Components<span class="attachedType">LsColors</span></a></li>
 
   </ul>
 </li>
@@ -222,6 +225,14 @@ Returns the style which should be used for this specific entry
 Returns the style which should be used for this specific path
 
 </dd>
+<a id="styleForPathComponents,LsColors,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#styleForPathComponents%2CLsColors%2Cstring"><span class="Identifier">styleForPathComponents</span></a><span class="Other">(</span><span class="Identifier">lsc</span><span class="Other">:</span> <a href="lscolors.html#LsColors"><span class="Identifier">LsColors</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span>
+    <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">style</span><span class="Other">:</span> <a href="style.html#Style"><span class="Identifier">Style</span></a><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Return a seq of path components and corresponding style
+
+</dd>
 
 </dl></div>
 
@@ -232,7 +243,7 @@ Returns the style which should be used for this specific path
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-02-25 09:08:32 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-03-05 19:53:40 UTC</small>
       </div>
     </div>
   </div>
