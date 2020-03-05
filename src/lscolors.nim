@@ -25,7 +25,7 @@ type
   LsColors* = object
     ## Holds parsed LS_COLORS
     types*:TableRef[EntryType, Style]
-    patterns*:seq[tuple[pattern:string, color:Style]]
+    patterns*:TableRef[string, Style]
     lnTarget*:bool
 
 proc rawParse(str: string): seq[RawRule] =
@@ -38,12 +38,13 @@ proc rawParse(str: string): seq[RawRule] =
 proc emptyLsColors*(): LsColors =
   ## Creates an empty LsColors object
   LsColors(types: newTable[EntryType, Style](),
-           patterns: @[],
+           patterns: newTable[string, Style](),
            lnTarget: false)
 
 proc parseLsColors*(str: string): LsColors =
   ## Parse a LS_COLORS string
   result.types = newTable[EntryType, Style]()
+  result.patterns = newTable[string, Style]()
 
   let raw = rawParse(str)
   for rule in raw:
@@ -53,7 +54,7 @@ proc parseLsColors*(str: string): LsColors =
       if (let entryType = rule.pattern.strToEntryType; entryType.isSome):
         result.types[entryType.get] = style.get
       else:
-        result.patterns.add((rule.pattern, style.get))
+        result.patterns[rule.pattern] = style.get
 
 proc defaultLsColors*(): LsColors =
   ## A set of default LS_COLORS
@@ -95,9 +96,9 @@ proc styleForDirEntry*(lsc:LsColors, entry:Entry): Style =
     return lsc.types.getOrDefault(entry.typ, defaultStyle())
 
   # Pick style from path
-  for pattern in lsc.patterns:
-    if pathMatchesPattern(entry.path, pattern[0]):
-      return pattern[1]
+  for pattern, style in lsc.patterns.pairs:
+    if pathMatchesPattern(entry.path, pattern):
+      return style
 
 proc styleForPath*(lsc:LsColors, path:string): Style =
   ## Returns the style which should be used for this specific path
