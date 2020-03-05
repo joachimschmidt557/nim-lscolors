@@ -4,7 +4,7 @@
 ## query the style which should be applied
 ## to a certain filesystem entry
 
-import os, options, tables, strutils
+import os, options, tables, strutils, sequtils
 
 import lscolors/[style, entrytypes]
 
@@ -60,9 +60,8 @@ proc defaultLsColors*(): LsColors =
   return parseLsColors(default)
 
 proc parseLsColorsEnv*(): LsColors =
-  ## Parses the LS_COLORS environment variable.
-  ## Defaults to `defaultLsColors` when no such
-  ## environment variable exists
+  ## Parses the LS_COLORS environment variable. Defaults to `defaultLsColors`
+  ## when no such environment variable exists
   const
     envVar = "LS_COLORS"
   if existsEnv(envVar):
@@ -83,8 +82,7 @@ proc pathMatchesPattern(path: string, pattern: string): bool =
     return path == pattern
 
 proc styleForDirEntry*(lsc:LsColors, entry:Entry): Style =
-  ## Returns the style which should be used
-  ## for this specific entry
+  ## Returns the style which should be used for this specific entry
 
   # Special case: inherit style from target
   if entry.typ == etSymbolicLink and lsc.lnTarget:
@@ -102,6 +100,10 @@ proc styleForDirEntry*(lsc:LsColors, entry:Entry): Style =
       return pattern[1]
 
 proc styleForPath*(lsc:LsColors, path:string): Style =
-  ## Returns the style which should be used
-  ## for this specific path
+  ## Returns the style which should be used for this specific path
   styleForDirEntry(lsc, Entry(path: path, typ: path.pathEntryType()))
+
+proc styleForPathComponents*(lsc:LsColors, path:string): seq[tuple[path:string, style:Style]] =
+  ## Return a seq of path components and corresponding style
+  let pathComponents = toSeq(path.parentDirs(fromRoot=true))
+  return pathComponents.mapIt((path, lsc.styleForPath(path)))
