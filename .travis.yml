@@ -29,7 +29,7 @@ script:
 before_deploy:
   - find src/ -name '*.nim' -exec nim doc {} \;
   - mkdir doc
-  - mv *.html doc/
+  - mv *.html nimdoc.out.css doc/
 
 deploy:
   provider: pages
