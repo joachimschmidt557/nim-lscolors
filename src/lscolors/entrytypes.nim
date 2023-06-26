@@ -105,7 +105,9 @@ proc pathEntryType*(path:string): EntryType =
 
   if S_ISLNK(res.st_mode):
     # Check if the target exists
-    let target = expandSymlink(path)
+    var target = expandSymlink(path)
+    if not target.isAbsolute:
+      target = path.parentDir / target
     if stat(target, res) >= 0:
       return etSymbolicLink
     else:
