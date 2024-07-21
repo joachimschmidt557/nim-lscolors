@@ -32,7 +32,7 @@ type
     etReset,
     etClearLine,
 
-proc strToEntryType*(str:string): Option[EntryType] =
+proc strToEntryType*(str: string): Option[EntryType] =
   ## Parses a string into an entry type if
   ## possible
   case str
@@ -62,9 +62,9 @@ proc strToEntryType*(str:string): Option[EntryType] =
   of "cl": return some etClearLine
   else: return none EntryType
 
-proc pathEntryType*(path:string): EntryType =
+proc pathEntryType*(path: string): EntryType =
   ## Determines the entry type of this path
-  var res : Stat
+  var res: Stat
   if lstat(path, res) < 0:
     raise newException(OSError, "Error statting this file")
 

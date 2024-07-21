@@ -18,7 +18,7 @@ type
 
   ColorFixed* = uint8 ## One color of the 256 terminal colors
 
-  ColorRGB* = tuple[r:uint8, g:uint8, b:uint8] ## RBG colors
+  ColorRGB* = tuple[r: uint8, g: uint8, b: uint8] ## RBG colors
 
   ColorKind* = enum
     ## Three possible color descriptions
@@ -69,7 +69,7 @@ proc defaultStyle*(): Style =
   ## Default style (no colors, default font)
   Style(fg: none Color, bg: none Color, font: defaultFontStyle())
 
-proc parseStyle*(str:string): Option[Style] =
+proc parseStyle*(str: string): Option[Style] =
   ## Parses the style description
   if str == "" or str == "0" or str == "00":
     return none Style
@@ -83,7 +83,7 @@ proc parseStyle*(str:string): Option[Style] =
     red = 0u8
     green = 0u8
 
-    components:seq[int]
+    components: seq[int]
 
   # Catch any parseInt errors
   try:

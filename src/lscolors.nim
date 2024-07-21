@@ -14,19 +14,19 @@ const
 type
   Entry* = object
     ## Holds a path and its type
-    path*:string
-    typ*:EntryType
+    path*: string
+    typ*: EntryType
 
   RawRule = object
     ## Basically a string pair
-    pattern:string
-    color:string
+    pattern: string
+    color: string
 
   LsColors* = object
     ## Holds parsed LS_COLORS
-    types*:TableRef[EntryType, Style]
-    patterns*:TableRef[string, Style]
-    lnTarget*:bool
+    types*: TableRef[EntryType, Style]
+    patterns*: TableRef[string, Style]
+    lnTarget*: bool
 
 proc rawParse(str: string): seq[RawRule] =
   for rule in str.split(':'):
@@ -82,7 +82,7 @@ proc pathMatchesPattern(path: string, pattern: string): bool =
   else:
     return path == pattern
 
-proc styleForDirEntry*(lsc:LsColors, entry:Entry): Style =
+proc styleForDirEntry*(lsc: LsColors, entry: Entry): Style =
   ## Returns the style which should be used for this specific entry
 
   # Special case: inherit style from target
@@ -100,11 +100,12 @@ proc styleForDirEntry*(lsc:LsColors, entry:Entry): Style =
     if pathMatchesPattern(entry.path, pattern):
       return style
 
-proc styleForPath*(lsc:LsColors, path:string): Style =
+proc styleForPath*(lsc: LsColors, path: string): Style =
   ## Returns the style which should be used for this specific path
   styleForDirEntry(lsc, Entry(path: path, typ: path.pathEntryType()))
 
-proc styleForPathComponents*(lsc:LsColors, path:string): seq[tuple[path:string, style:Style]] =
+proc styleForPathComponents*(lsc: LsColors, path: string): seq[tuple[
+    path: string, style: Style]] =
   ## Return a seq of path components and corresponding style
-  let pathComponents = toSeq(path.parentDirs(fromRoot=true))
+  let pathComponents = toSeq(path.parentDirs(fromRoot = true))
   return pathComponents.mapIt((path, lsc.styleForPath(path)))

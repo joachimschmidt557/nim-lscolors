@@ -6,7 +6,7 @@ import terminal, options
 
 import style
 
-proc getStyles*(s:style.Style): set[terminal.Style] =
+proc getStyles*(s: style.Style): set[terminal.Style] =
   ## Get a set of styles from this style
   if s.font.bold:
     result.incl styleBright
@@ -15,7 +15,7 @@ proc getStyles*(s:style.Style): set[terminal.Style] =
   if s.font.underline:
     result.incl styleUnderscore
 
-proc getForegroundColor*(s:style.Style): Option[ForegroundColor] =
+proc getForegroundColor*(s: style.Style): Option[ForegroundColor] =
   ## Get the foreground color from this style
   if s.fg.isNone:
     return none ForegroundColor
@@ -35,7 +35,7 @@ proc getForegroundColor*(s:style.Style): Option[ForegroundColor] =
   else:
     return none ForegroundColor
 
-proc getBackgroundColor*(s:style.Style): Option[BackgroundColor] =
+proc getBackgroundColor*(s: style.Style): Option[BackgroundColor] =
   ## Get the background color from this style
   if s.bg.isNone:
     return none BackgroundColor
